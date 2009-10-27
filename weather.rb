@@ -1,9 +1,15 @@
 require 'rubygems'
-require 'sinatra'
+require 'sinatra/base'
 require 'yahoo-weather'
+require 'mustache/sinatra'
 
 module Weather
 	class App < Sinatra::Default
+	  register Mustache::Sinatra
+	  
+	  set :views,     'templates/'
+	  set :mustaches, 'views/' 
+	
     helpers do
 	    def get_weather_info(zipcode)
 		    client = YahooWeather::Client.new
@@ -29,12 +35,7 @@ module Weather
     end
 
     get '/' do 
-	    '''
-	    <form action="/" method="post">
-		    Zip Code<input type="text" id="zipcode_input" name="zipcode" value="Enter a zipcode"/>
-		    <input type="submit" style="display: none" />
-	    </form>
-	    '''
+	    mustache :index
     end
 
     post '/' do
