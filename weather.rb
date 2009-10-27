@@ -6,11 +6,6 @@ require 'mustache/sinatra'
 module Weather
 	class App < Sinatra::Base
 		register Mustache::Sinatra
-		
-		set :views,     'templates/'
-		set :mustaches, 'views/'
-		
-		enable :sessions
 
 		helpers do
 			def get_weather_info(zipcode)
@@ -24,7 +19,7 @@ module Weather
 		end
 
 		get '/' do 
-			mustache :index
+			haml :index
 		end
 
 		post '/' do
