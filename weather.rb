@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra/base'
 require 'yahoo-weather'
 require 'mustache/sinatra'
+require 'Haml'
 
 module Weather
 	class App < Sinatra::Base
@@ -28,9 +29,8 @@ module Weather
 		end
 
 		get %r{/(\d{5})} do |zipcode|
-			weather = get_weather_info(zipcode)
-			
-			weather['title'] + '<p>' + weather['temp'].to_s + ' degrees; ' + weather['text'];
+			@weather = get_weather_info(zipcode)
+			haml :conditions
 		end
 	end
 end
