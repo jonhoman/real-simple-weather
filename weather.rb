@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'sinatra/base'
 require 'yahoo-weather'
-require 'mustache/sinatra'
 require 'haml'
 require 'sass'
 
