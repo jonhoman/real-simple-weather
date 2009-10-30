@@ -1,3 +1,5 @@
-%form{:action => '/', :method => 'post'}
-	%input{:type => 'text', :id => 'zipcode_input', :name => 'zipcode', :value => 'Enter a zipcode'}/
+%form{:action => '/weather', :method => 'post'}
+	What's the weather near 
+	%input{:type => 'text', :id => 'zipcode_input', :name => 'zipcode', :value => 'zipcode', :onclick => 'clicked(this)'}/
+	?
 	%input{:type => 'submit', :style => 'display: none'}/

@@ -1,13 +1,17 @@
 !!! strict
 %html
 	%head
-		%title= @title
-
+		%title= "Real Simple Weather"
+		%link{:rel=>"stylesheet", :href=>"/style.css", :media=>"screen"}
 		%script{:src=>"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js", :type=>"text/javascript"}
+		:javascript 
+				function clicked(e) {
+					if (e.cleared) { return; }
+					e.cleared = true;
+					e.value = '';
+				}
 	
 	%body
-		%h1
-			%a{:href => "/"}= "Jon Homan"
 		%div#content
 			= yield
 		
