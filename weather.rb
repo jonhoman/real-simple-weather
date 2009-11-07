@@ -6,7 +6,6 @@ require 'sass'
 
 module Weather
 	class App < Sinatra::Base
-		#register Mustache::Sinatra
 		helpers do
 			def get_weather_info(zipcode)
 				client = YahooWeather::Client.new
